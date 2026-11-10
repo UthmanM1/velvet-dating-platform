@@ -37,7 +37,7 @@ export const config = {
     pricePlatinum: env.STRIPE_PRICE_PLATINUM ?? "",
     /** Test mode only: live keys are deliberately rejected. */
     get configured() {
-      return this.secretKey.startsWith("sk_test_") && Boolean(this.priceGold && this.pricePlatinum);
+      return /^(sk|rk)_test_/.test(this.secretKey) && Boolean(this.priceGold && this.pricePlatinum);
     },
   },
 

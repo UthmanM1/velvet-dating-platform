@@ -56,7 +56,7 @@ See `.env.example`. Required in production: `SESSION_SECRET`. Optional: `DEMO_ME
 database in this repository's CI; review before use. Remaining work: implement the Supabase runtime adapter behind the services.
 
 ## Stripe (test mode)
-Set `STRIPE_SECRET_KEY` (`sk_test_`), `STRIPE_PRICE_GOLD`, `STRIPE_PRICE_PLATINUM`, and point a webhook at `/api/stripe/webhook`
+Set `STRIPE_SECRET_KEY` (`sk_test_` or restricted `rk_test_`), `STRIPE_PRICE_GOLD`, `STRIPE_PRICE_PLATINUM`, and point a webhook at `/api/stripe/webhook`
 with `STRIPE_WEBHOOK_SECRET`. Without these, billing runs in demo mode and no card is charged. Live keys are rejected.
 
 ## Age verification
