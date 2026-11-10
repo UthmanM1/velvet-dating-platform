@@ -120,7 +120,7 @@ export async function billingHistory(userId: string): Promise<Payment[]> {
 /** Handles verified Stripe webhook events. Called only from the signature-checked route handler. */
 export async function applyStripeEvent(event: { type: string; data: { object: Record<string, unknown> } }): Promise<void> {
   const store = await getStore();
-  const obj = event.data.object as Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+  const obj = event.data.object as Record<string, any>;
   const metaUser: string | undefined = obj.metadata?.userId ?? obj.client_reference_id;
   switch (event.type) {
     case "checkout.session.completed": {

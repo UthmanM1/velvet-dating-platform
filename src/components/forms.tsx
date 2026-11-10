@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useActionState, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { Heart, Loader2, Send } from "lucide-react";
@@ -353,6 +354,7 @@ export function ChatPanel({ conversationId, otherId, initial }: { conversationId
 }
 
 export function NewMessageForm({ targetId, name }: { targetId: string; name: string }) {
+  const router = useRouter();
   const [text, setText] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
@@ -364,7 +366,7 @@ export function NewMessageForm({ targetId, name }: { targetId: string; name: str
     const j = await r.json().catch(() => ({}));
     setSending(false);
     if (!r.ok) return setError(j.error ?? "Message could not be sent.");
-    window.location.href = `/dashboard/messages/${j.conversationId}`;
+    router.push(`/dashboard/messages/${j.conversationId}`);
   }
   return (
     <form onSubmit={send} className="space-y-3">

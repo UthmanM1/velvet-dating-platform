@@ -148,7 +148,7 @@ export async function listSubscriptions(admin: User) {
   const store = await getStore();
   return [...store.users.values()].filter((u) => u.role === "member").map((u) => {
     const s = currentSubscription(store, u.id);
-    return { userId: u.id, name: store.profiles.get(u.id)?.displayName ?? "?", email: u.email, isDemo: u.isDemo, ...s };
+    return { ...s, name: store.profiles.get(u.id)?.displayName ?? "?", email: u.email, isDemo: u.isDemo };
   }).sort((a, b) => b.currentPeriodEnd.localeCompare(a.currentPeriodEnd)).slice(0, 100);
 }
 
