@@ -52,8 +52,10 @@ See `.env.example`. Required in production: `SESSION_SECRET`. Optional: `DEMO_ME
 - Demo state is per server instance and resets on cold start. Verification/reset links are shown on screen in demo mode.
 
 ## Database setup (Supabase)
-`supabase link && supabase db push`, then run `supabase/seed.sql`. Migrations have **not** been executed against a live
-database in this repository's CI; review before use. Remaining work: implement the Supabase runtime adapter behind the services.
+Migrations 0001-0003 have been applied to a Supabase project (`velvet`, eu-west-1) and pass Supabase's security advisor (RLS on all tables,
+private photo bucket, helper functions in a private schema). To reproduce: `supabase link && supabase db push`.
+**Remaining work:** the runtime adapter behind `src/server/services/*` still uses the in-memory store; it needs
+`SUPABASE_SERVICE_ROLE_KEY` (not obtainable through the connector) and a Supabase Auth integration.
 
 ## Stripe (test mode)
 Set `STRIPE_SECRET_KEY` (`sk_test_` or restricted `rk_test_`), `STRIPE_PRICE_GOLD`, `STRIPE_PRICE_PLATINUM`, and point a webhook at `/api/stripe/webhook`

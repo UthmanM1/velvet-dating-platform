@@ -12,6 +12,7 @@ $$;
 
 alter table public.users enable row level security;
 alter table public.profiles enable row level security;
+alter table public.interests enable row level security;
 alter table public.profile_interests enable row level security;
 alter table public.profile_photos enable row level security;
 alter table public.preferences enable row level security;
@@ -27,6 +28,8 @@ alter table public.subscriptions enable row level security;
 alter table public.payments enable row level security;
 alter table public.notifications enable row level security;
 alter table public.admin_audit_logs enable row level security;
+
+create policy interests_ref_read on public.interests for select using (auth.uid() is not null);
 
 -- users: self read only; role/status can never be changed by the client.
 create policy users_self_read on public.users for select using (id = auth.uid() or public.is_admin());
