@@ -10,7 +10,7 @@ Stripe (test mode) and a Supabase/PostgreSQL schema with Row Level Security.
 ## Features
 - Public site: home, about, discover (preview), plans, safety, FAQ, contact, terms, privacy, guidelines.
 - Auth: registration (DOB, gender, preferences, location, intention, bio, 18+ confirmation), email verification,
-  login/logout, password reset, bcrypt-style salted hashing, signed httpOnly sessions, protected routes, rate limiting.
+  login/logout, password reset, scrypt salted password hashing, signed httpOnly sessions, protected routes, rate limiting.
 - Profiles: edit, photo upload/remove (moderated), privacy + visibility, incognito (Platinum), block, report, favourites.
 - Discovery: age, distance, gender, intention, interests, verified/online/recently-active filters, sorting, pagination.
 - Messaging: conversations, timestamps, read receipts, unread badges, notifications, block/report. Demo mode uses
